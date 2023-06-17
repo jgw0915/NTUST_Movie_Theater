@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.ntustmovietheater.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_movieList"
+        android:name="com.example.ntustmovietheater.ui.movieList.MovieListFragment"
+        android:label="@string/menu_movieList"
+        tools:layout="@layout/fragment_movie_list" >
+        <action
+            android:id="@+id/action_nav_movieList_to_orderFragment"
+            app:destination="@id/orderFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ordered_tickets"
+        android:name="com.example.ntustmovietheater.ui.orderdTickets.OrderedTicketsFragment"
+        android:label="@string/menu_ordered_ticket"
+        tools:layout="@layout/fragment_ordered_tickets" >
+        <action
+            android:id="@+id/action_nav_ordered_tickets_to_ticketDetailFragment"
+            app:destination="@id/ticketDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderFragment"
+        android:name="com.example.ntustmovietheater.OrderFragment"
+        android:label="fragment_order"
+        tools:layout="@layout/fragment_order" >
+        <action
+            android:id="@+id/action_orderFragment_to_nav_movieList"
+            app:destination="@id/nav_movieList" />
+        <argument
+            android:name="uid"
+            app:argType="string" />
+        <argument
+            android:name="imageNumber"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketDetailFragment"
+        android:name="com.example.ntustmovietheater.TicketDetailFragment"
+        android:label="fragment_ticket_detail"
+        tools:layout="@layout/fragment_ticket_detail" >
+        <action
+            android:id="@+id/action_ticketDetailFragment_to_nav_ordered_tickets"
+            app:destination="@id/nav_ordered_tickets" />
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </fragment>
+</navigation>

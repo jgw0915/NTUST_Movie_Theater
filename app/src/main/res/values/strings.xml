@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NTUST Movie Theater</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="home_hint">點選左上方Menu進行操作</string>
+    <string name="home_title">歡迎來到\n台科大電影院訂票系統</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_movieList">MovieList</string>
+    <string name="menu_ordered_ticket">Ordered Tickets</string>
+    <string name="order">訂票</string>
+</resources>
