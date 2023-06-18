@@ -8,12 +8,11 @@ import android.widget.TextView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ntustmovietheater.R
-import com.example.ntustmovietheater.model.JoinTable
-import com.example.ntustmovietheater.model.OrderTicket
+import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.ui.orderdTickets.OrderedTicketsFragment
 import com.example.ntustmovietheater.ui.orderdTickets.OrderedTicketsFragmentDirections
 
-class OrderedTicketAdapter (orderMovieList:MutableList<OrderTicket>,
+class OrderedTicketAdapter (orderMovieList:MutableList<MovieTicket>,
                             fragment:OrderedTicketsFragment
 ) :RecyclerView.Adapter<OrderedTicketAdapter.orderedTicketViewHolder>(){
 

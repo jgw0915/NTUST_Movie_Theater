@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ntustmovietheater.database.MovieRommDatabase
 import com.example.ntustmovietheater.model.JoinTable
 import com.example.ntustmovietheater.model.Movie
-import com.example.ntustmovietheater.model.OrderTicket
+import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.model.ShowInfo
 import com.example.ntustmovietheater.network.MovieNetwork
 import com.example.ntustmovietheater.network.asDatabaseModel
@@ -25,13 +25,13 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
     val showInfoDao = db.showInfoDao()
     val movie_showInfoDao = db.movie_showInfoDao()
 
-    private val _order_ticket_List:MutableList<OrderTicket> = mutableListOf()
+    private val _order_ticket_List:MutableList<MovieTicket> = mutableListOf()
     val order_ticket_List get()=_order_ticket_List
 
     private val _movie_List:MutableList<JoinTable> =getMovie()
     val movie_List get()=_movie_List
 
-    fun addOrderTicket(movie:OrderTicket){
+    fun addOrderTicket(movie:MovieTicket){
         _order_ticket_List.add(movie )
     }
 

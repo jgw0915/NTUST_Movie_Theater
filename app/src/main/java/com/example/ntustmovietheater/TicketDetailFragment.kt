@@ -8,8 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.ntustmovietheater.databinding.FragmentTicketDetailBinding
-import com.example.ntustmovietheater.model.JoinTable
-import com.example.ntustmovietheater.model.OrderTicket
 import com.example.ntustmovietheater.viewModel.MovieViewModel
 import com.example.ntustmovietheater.viewModel.MovieViewModelFactory
 

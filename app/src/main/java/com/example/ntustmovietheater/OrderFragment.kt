@@ -7,18 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.Nullable
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.ntustmovietheater.databinding.FragmentOrderBinding
 import com.example.ntustmovietheater.model.JoinTable
-import com.example.ntustmovietheater.model.OrderTicket
+import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.viewModel.MovieViewModel
 import com.example.ntustmovietheater.viewModel.MovieViewModelFactory
-import com.google.android.material.snackbar.Snackbar
 
 class OrderFragment : Fragment() {
 
@@ -86,7 +81,7 @@ class OrderFragment : Fragment() {
             increasePeople()
         }
         binding.submitButtom.setOnClickListener{
-            movieViewModel.addOrderTicket(OrderTicket(movie.movie.uid,movie.movie.title,movie.showInfo.get(0).startTime,movie.showInfo.get(0).locationName,movie.showInfo.get(0).location,movie.showInfo.get(0).endTime,movie.showInfo.get(0).onSale,movie.showInfo.get(0).price,imageNumber,currentPeople))
+            movieViewModel.addOrderTicket(MovieTicket(movie.movie.uid,movie.movie.title,movie.showInfo.get(0).startTime,movie.showInfo.get(0).locationName,movie.showInfo.get(0).location,movie.showInfo.get(0).endTime,movie.showInfo.get(0).onSale,movie.showInfo.get(0).price,imageNumber,currentPeople))
             for (i in movieViewModel.order_ticket_List){
                 Log.d("TAG","movie:$i")
             }

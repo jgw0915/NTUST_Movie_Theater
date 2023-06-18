@@ -1,11 +1,7 @@
 package com.example.ntustmovietheater.model
 
-import androidx.annotation.Nullable
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
 
-
-data class OrderTicket (
+data class MovieTicket (
     val uid: String,
     val title:String?,
     val startTime:String?,
