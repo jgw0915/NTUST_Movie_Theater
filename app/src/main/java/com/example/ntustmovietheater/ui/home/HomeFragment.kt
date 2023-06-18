@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,7 +54,12 @@ class HomeFragment : Fragment() {
             textView.text = it
         }
 
-        movieViewModel.getMovie()
+        movieViewModel.refreshDataFromRepository()
+        val movie =movieViewModel.getMovie()
+        for (i in movie){
+            Log.d("TAG","home f movie:$i")
+        }
+        movieViewModel.getOrderTicket()
 
     }
 

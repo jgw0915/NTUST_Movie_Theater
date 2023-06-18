@@ -7,9 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.ntustmovietheater.databinding.FragmentTicketDetailBinding
+import com.example.ntustmovietheater.model.JoinTable
+import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.viewModel.MovieViewModel
 import com.example.ntustmovietheater.viewModel.MovieViewModelFactory
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 
 
 class TicketDetailFragment : Fragment() {
@@ -24,12 +30,12 @@ class TicketDetailFragment : Fragment() {
         )
     }
 
-    private var position:Int=0
+    private var ticketId:Int=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            position=it.getInt("position")
+            ticketId=it.getInt("ticketId")
         }
     }
 
@@ -47,7 +53,7 @@ class TicketDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d("tag","ONViewCreatedSuccess")
-        val movie=movieViewModel.order_ticket_List[position]
+        val movie=findMovie()
         binding.ticketDetailImage.setImageResource(putImage(movie.imageNumber))
 
         binding.ticketDetailTitle.text=movie.title
@@ -58,6 +64,23 @@ class TicketDetailFragment : Fragment() {
         binding.ticketDetailOnsale.text="優惠價格:"+movie.onSale
         binding.ticketDetailPrtice.text="票價:"+movie.price
         binding.ticketDetailPeople.text=movie.people.toString()+"人"
+        binding.ticketDetailCancellButtom.setOnClickListener{
+            movieViewModel.cancelTicket(movie)
+
+            val action=TicketDetailFragmentDirections.actionTicketDetailFragmentToNavOrderedTickets()
+            findNavController().navigate(action)
+        }
+    }
+
+    fun findMovie(): MovieTicket {
+        val movie=movieViewModel.order_ticket_List
+        var wrong_movie: MovieTicket =movieViewModel.order_ticket_List.get(0)
+        for (i in movie){
+            if (i.ticket_id.equals(ticketId)){
+                return i
+            }
+        }
+        return wrong_movie
     }
 
     override fun onDestroyView() {

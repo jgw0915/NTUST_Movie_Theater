@@ -41,7 +41,7 @@ class MovieAdapter (
         val item=list[position]
 //        holder.image.setImageResource(putImage(item.imageNumber))
         holder.title.text=item.movie.title
-        val imageNumber=generateImageNumber()
+        val imageNumber=(position%8)+1
         holder.image.setImageResource(putImage(imageNumber ))
         holder.order.setOnClickListener {
             val action= MovieListFragmentDirections.actionNavMovieListToOrderFragment(item.movie.uid,imageNumber)
@@ -64,9 +64,5 @@ class MovieAdapter (
         }
     }
 
-    private fun generateImageNumber():Int{
-        val number=(1..8).random()
-        return number
-    }
 
 }

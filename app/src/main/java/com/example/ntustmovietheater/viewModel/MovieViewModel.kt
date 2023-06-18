@@ -13,6 +13,7 @@ import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.model.ShowInfo
 import com.example.ntustmovietheater.network.MovieNetwork
 import com.example.ntustmovietheater.network.asDatabaseModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.lang.Exception
@@ -24,15 +25,48 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
     val movieDao = db.movieDao()
     val showInfoDao = db.showInfoDao()
     val movie_showInfoDao = db.movie_showInfoDao()
+    val movieTicketDao = db.movieTicketDao()
 
-    private val _order_ticket_List:MutableList<MovieTicket> = mutableListOf()
+    private var _order_ticket_List:MutableList<MovieTicket> = mutableListOf()
     val order_ticket_List get()=_order_ticket_List
 
-    private val _movie_List:MutableList<JoinTable> =getMovie()
+    private var _movie_List:MutableList<JoinTable> = getMovie()
     val movie_List get()=_movie_List
 
+
+    fun cancelTicket(movie:MovieTicket){
+        viewModelScope.launch {
+            movieTicketDao.deleteTicket(movie.ticket_id)
+            _order_ticket_List.remove(movie)
+            delay(20)
+        }
+
+    }
+
     fun addOrderTicket(movie:MovieTicket){
-        _order_ticket_List.add(movie )
+        viewModelScope.launch {
+            movieTicketDao.insert(movie)
+            _order_ticket_List.add(movie)
+            Log.d("TAG","insert movie:$movie")
+        }
+    }
+
+    fun getOrderTicket()  {
+        var movies: MutableList<MovieTicket> = mutableListOf()
+        viewModelScope.launch {
+            try{
+                movies = movieTicketDao.getAllMovieTicket()
+                Log.d("TAG", "getMovies: Success")
+                for (i in movies){
+                    Log.d("TAG","get order movie:$i")
+                    _order_ticket_List.add(i)
+                    Log.d("TAG","add success")
+                }
+            }catch (e:Exception){
+                Log.d("TAG",e.toString())
+
+            }
+        }
     }
 
 

@@ -54,7 +54,7 @@
             android:id="@+id/action_ticketDetailFragment_to_nav_ordered_tickets"
             app:destination="@id/nav_ordered_tickets" />
         <argument
-            android:name="position"
+            android:name="ticketId"
             app:argType="integer" />
     </fragment>
 </navigation>

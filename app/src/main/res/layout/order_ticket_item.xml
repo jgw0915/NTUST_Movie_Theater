@@ -3,49 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_margin="10dp"
     android:layout_height="150dp">
 
-    <TextView
-        android:id="@+id/order_ticket_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="20dp"
-        android:text="title"
-        android:textSize="20sp"
-        app:layout_constraintStart_toEndOf="@+id/order_ticket_image"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/order_ticket_image"
-        android:layout_width="94dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/layout_stroke"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/aquaman" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/order_ticket_people"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="58dp"
-        android:text="people"
-        app:layout_constraintStart_toEndOf="@+id/order_ticket_image"
-        app:layout_constraintTop_toBottomOf="@+id/order_ticket_title" />
 
-    <TextView
-        android:id="@+id/order_ticket_moreInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:text="_詳細資訊_"
-        android:textColor="@color/teal_200"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/order_ticket_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="20dp"
+            android:text="title"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/order_ticket_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/order_ticket_image"
+            android:layout_width="94dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/layout_stroke"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/aquaman" />
+
+        <TextView
+            android:id="@+id/order_ticket_people"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="58dp"
+            android:text="people"
+            app:layout_constraintStart_toEndOf="@+id/order_ticket_image"
+            app:layout_constraintTop_toBottomOf="@+id/order_ticket_title" />
+
+        <TextView
+            android:id="@+id/order_ticket_moreInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="_詳細資訊_"
+            android:textColor="@color/teal_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

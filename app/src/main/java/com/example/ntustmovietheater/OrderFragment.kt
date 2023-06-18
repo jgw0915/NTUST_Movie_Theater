@@ -81,7 +81,13 @@ class OrderFragment : Fragment() {
             increasePeople()
         }
         binding.submitButtom.setOnClickListener{
-            movieViewModel.addOrderTicket(MovieTicket(movie.movie.uid,movie.movie.title,movie.showInfo.get(0).startTime,movie.showInfo.get(0).locationName,movie.showInfo.get(0).location,movie.showInfo.get(0).endTime,movie.showInfo.get(0).onSale,movie.showInfo.get(0).price,imageNumber,currentPeople))
+            val id:Int
+            if (movieViewModel.order_ticket_List.size==0){
+                id=0
+            }else{
+                id=movieViewModel.order_ticket_List[movieViewModel.order_ticket_List.size-1].ticket_id+1
+            }
+            movieViewModel.addOrderTicket(MovieTicket(id,movie.movie.uid,movie.movie.title,movie.showInfo.get(0).startTime,movie.showInfo.get(0).locationName,movie.showInfo.get(0).location,movie.showInfo.get(0).endTime,movie.showInfo.get(0).onSale,movie.showInfo.get(0).price,imageNumber,currentPeople))
             for (i in movieViewModel.order_ticket_List){
                 Log.d("TAG","movie:$i")
             }

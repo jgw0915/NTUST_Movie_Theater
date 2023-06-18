@@ -42,8 +42,8 @@ class OrderedTicketAdapter (orderMovieList:MutableList<MovieTicket>,
         holder.title.text=item.title
         holder.people.text=item.people.toString()+"人"
         holder.moreInfo.setOnClickListener {
-            val action=OrderedTicketsFragmentDirections.actionNavOrderedTicketsToTicketDetailFragment(position)
-            action.setPosition(position)
+            val action=OrderedTicketsFragmentDirections.actionNavOrderedTicketsToTicketDetailFragment(item.ticket_id)
+            action.setTicketId(item.ticket_id)
             NavHostFragment.findNavController(f).navigate(action)
         }
     }

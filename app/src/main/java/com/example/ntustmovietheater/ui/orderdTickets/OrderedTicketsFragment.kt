@@ -52,6 +52,8 @@ class OrderedTicketsFragment : Fragment() {
             Log.d("TAG","movie:$i")
         }
 
+
+
         recyclerView=binding.orderedTicketRecyclerview
         recyclerView.adapter=OrderedTicketAdapter(movieViewModel.order_ticket_List,this)
 
