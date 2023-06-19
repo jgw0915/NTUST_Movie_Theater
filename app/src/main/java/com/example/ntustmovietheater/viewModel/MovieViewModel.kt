@@ -30,7 +30,7 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
     private var _order_ticket_List:MutableList<MovieTicket> = mutableListOf()
     val order_ticket_List get()=_order_ticket_List
 
-    private var _movie_List:MutableList<JoinTable> = getMovie()
+    private var _movie_List:MutableList<JoinTable> = mutableListOf()
     val movie_List get()=_movie_List
 
 
@@ -38,7 +38,7 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
         viewModelScope.launch {
             movieTicketDao.deleteTicket(movie.ticket_id)
             _order_ticket_List.remove(movie)
-            delay(20)
+            delay(200)
         }
 
     }
@@ -123,14 +123,13 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
         }
     }
 
-    fun getMovie() :MutableList<JoinTable> {
-        var join_movies:MutableList<JoinTable> = mutableListOf()
+    fun getMovie()  {
         viewModelScope.launch {
             try {
                 val movies = movieDao.getAllMovie()
                 for (i in movies){
                     val result: JoinTable = movie_showInfoDao.getMovie(i.uid)
-                    join_movies.add(result)
+                    _movie_List.add(result)
                     Log.d("TAG", "getMovies: Success")
                     Log.d("TAG", result.showInfo.get(0).locationName.toString())
                 }
@@ -138,7 +137,6 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
                 Log.d("TAG", e.toString())
             }
         }
-        return join_movies
     }
 
     fun onNetworkErrorShown() {
