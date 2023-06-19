@@ -120,11 +120,13 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
 //                    _eventNetworkError.value = true
                 Log.d("TAG", networkError.toString())
             }
+            getMovie()
         }
     }
 
     fun getMovie()  {
         viewModelScope.launch {
+            Log.d("TAG","Cal getMovie() success")
             try {
                 val movies = movieDao.getAllMovie()
                 for (i in movies){

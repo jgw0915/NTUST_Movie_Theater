@@ -15,6 +15,9 @@ import com.example.ntustmovietheater.databinding.FragmentMovieListBinding
 import com.example.ntustmovietheater.viewModel.MovieViewModel
 import com.example.ntustmovietheater.viewModel.MovieViewModelFactory
 import com.example.ntustmovietheater.network.NetWorkMovie
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 
 class MovieListFragment : Fragment() {
 
@@ -46,7 +49,6 @@ class MovieListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieViewModel.refreshDataFromRepository()
 
         recyclerView=binding.movieRecyclerView
         recyclerView.adapter=MovieAdapter(movieViewModel.movie_List,this)

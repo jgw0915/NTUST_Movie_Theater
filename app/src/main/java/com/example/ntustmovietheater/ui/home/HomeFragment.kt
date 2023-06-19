@@ -55,11 +55,12 @@ class HomeFragment : Fragment() {
         }
 
         movieViewModel.refreshDataFromRepository()
-        movieViewModel.getMovie()
+
         val movie =movieViewModel.movie_List
         for (i in movie){
             Log.d("TAG","home f movie:$i")
         }
+
         movieViewModel.getOrderTicket()
 
     }
