@@ -9,7 +9,7 @@ import com.example.ntustmovietheater.model.MovieTicket
 import com.example.ntustmovietheater.model.ShowInfo
 
 @Database(entities = [Movie::class, ShowInfo::class,MovieTicket::class], version = 4, exportSchema = false)
-abstract class MovieRommDatabase : RoomDatabase() {
+abstract class MovieRoomDatabase : RoomDatabase() {
     abstract fun movieDao():MovieDao
     abstract fun showInfoDao():ShowInfoDao
     abstract fun movie_showInfoDao():Movie_ShowInfo_Dao
@@ -17,12 +17,12 @@ abstract class MovieRommDatabase : RoomDatabase() {
     abstract fun movieTicketDao():MovieTicketDao
     companion object {
         @Volatile
-        private var INSTANCE: MovieRommDatabase? = null
-        fun getDatabase(context: Context): MovieRommDatabase {
+        private var INSTANCE: MovieRoomDatabase? = null
+        fun getDatabase(context: Context): MovieRoomDatabase {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    MovieRommDatabase::class.java,
+                    MovieRoomDatabase::class.java,
                     "item_database"
                 ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance

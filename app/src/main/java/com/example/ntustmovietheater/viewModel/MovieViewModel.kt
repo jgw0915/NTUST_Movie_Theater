@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.ntustmovietheater.database.MovieRommDatabase
+import com.example.ntustmovietheater.database.MovieRoomDatabase
 import com.example.ntustmovietheater.model.JoinTable
 import com.example.ntustmovietheater.model.Movie
 import com.example.ntustmovietheater.model.MovieTicket
@@ -19,7 +19,7 @@ import java.io.IOException
 import java.lang.Exception
 
 //db:MovieRommDatabase
-class MovieViewModel(db:MovieRommDatabase):ViewModel() {
+class MovieViewModel(db:MovieRoomDatabase):ViewModel() {
 
     //    private val repository = MovieRepository(get)
     val movieDao = db.movieDao()
@@ -151,7 +151,7 @@ class MovieViewModel(db:MovieRommDatabase):ViewModel() {
     /**
      * Factory for constructing DevByteViewModel with parameter
      */
-    class MovieViewModelFactory(private val db: MovieRommDatabase) : ViewModelProvider.Factory {
+    class MovieViewModelFactory(private val db: MovieRoomDatabase) : ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
             if (modelClass.isAssignableFrom(MovieViewModel::class.java)) {
                 @Suppress("UNCHECKED_CAST")

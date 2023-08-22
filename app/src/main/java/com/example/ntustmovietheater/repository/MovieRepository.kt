@@ -2,7 +2,7 @@ package com.example.ntustmovietheater.repository
 
 import android.util.Log
 import com.example.ntustmovietheater.network.MovieService
-import com.example.ntustmovietheater.database.MovieRommDatabase
+import com.example.ntustmovietheater.database.MovieRoomDatabase
 import com.example.ntustmovietheater.network.MovieNetwork
 import com.example.ntustmovietheater.network.asDatabaseModel
 import com.squareup.moshi.Moshi
